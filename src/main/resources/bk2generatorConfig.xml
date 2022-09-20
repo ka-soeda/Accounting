@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="section_five">
+    <jdbcConnection connectionURL="jdbc:postgresql://192.168.1.65:5432/postgres" driverClass="org.postgresql.Driver" password="postgres" userId="postgres" />
+    <javaModelGenerator targetPackage="jp.co.act.domain.mybatis"
+    targetProject="C://Users/ka-soeda/pleiades-2020-12-java-win-64bit-jre_20201222/pleiades/workspace/Accounting/src/main/java" />
+    <javaClientGenerator targetPackage="jp.co.act.domain.mybatis.repository"
+    targetProject="C://Users/ka-soeda/pleiades-2020-12-java-win-64bit-jre_20201222/pleiades/workspace/Accounting/src/main/java" type="XMLMAPPER" />
+    <table schema="section_five" tableName="ege_info">
+      <property name="versionColumn" value="version"/>
+    </table>
+  </context>
+</generatorConfiguration>

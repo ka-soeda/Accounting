@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<context id="context1">
+
+		<!-- 生成される Java ファイルのコメントに日付を付与しない -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://192.168.1.65:5432/postgres"
+			userId="postgres" password="postgres" />
+		<!-- PostgreSQLのTIMESTAMP型をJavaのLocalDateTimeへマッピングする -->
+		<javaTypeResolver>
+			<property name="useJSR310Types" value="true" />
+		</javaTypeResolver>
+		<javaModelGenerator
+			targetPackage="jp.co.act.domain.mybatis.entity"
+			targetProject="C://Users/ka-soeda/pleiades-2020-12-java-win-64bit-jre_20201222/pleiades/workspace/Accounting/src/main/java" />
+		<sqlMapGenerator targetPackage="jp.co.act.domain.mybatis.mapper"
+			targetProject="C://Users/ka-soeda/pleiades-2020-12-java-win-64bit-jre_20201222/pleiades/workspace/Accounting/src/main/java" />
+		<javaClientGenerator
+			targetPackage="jp.co.act.domain.mybatis.mapper"
+			targetProject="C://Users/ka-soeda/pleiades-2020-12-java-win-64bit-jre_20201222/pleiades/workspace/Accounting/src/main/java"
+			type="MIXEDMAPPER" />
+
+		<table schema="section_five" tableName="USER_INFO"></table>
+		<table schema="section_five" tableName="UPLOAD_HIS_INFO"></table>
+		<table schema="section_five" tableName="EGE_INFO"></table>
+		<table schema="section_five" tableName="CREDIT_CARD_INFO"></table>
+		<table schema="section_five" tableName="NAME_INFO"></table>
+		<table schema="section_five" tableName="MY_NUMBER_INFO"></table>
+		<table schema="section_five" tableName="RESIDENCE_INFO"></table>
+		<table schema="section_five" tableName="LOGIN_INFO"></table>
+		<table schema="section_five" tableName="WORKPLACE_INFO"></table>
+		<table schema="section_five" tableName="CONTACT_ADDRESS_INFO"></table>
+
+	</context>
+</generatorConfiguration>

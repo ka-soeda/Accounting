@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>取込画面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}">
+<!--     <script type="text/javascript" src="./webjars/jquery/2.1.4/jquery.min.js"></script> -->
+<!--     <script type="text/javascript" src="./webjars/bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="./javascript/datetimepicker/jquery.datetimepicker.js"></script>
+</head>
+<body>
+ <div class="container">
+ </div>
+ <h1>取込画面</h1>
+  <!-- メッセージエリア -->
+  <div class="container">
+  </div>
+    <p th:text="'testこんにちは, ' + ${name} + 'さん!'" />
+        <p th:text="'testこんにちは, ' + ${foge} + 'さん!'" />
+     <h2>取込画面</h2>
+     <!-- ファイル情報部 -->
+        <div class="row">
+            <div class="col-md-2 col-lg-2"></div>
+            <div class="col-md-8 col-lg-8">
+                <div class="well well-sm">
+                    <div>アップロードするファイルを選択して、アップロードボタンを押下してください。</div>
+                    <br />
+                    <form id="data_upload_form" enctype="multipart/form-data" method="/import/upload">
+                        <div class="form-group">
+                            <label>■ファイルパス：</label>
+                            <input type="file" id="upload_file" name="upload_file" required="" />
+                        </div>
+                        <div class="form-group">
+                            <input id="data_upload_button" type="submit" value="アップロード" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-2"></div>
+        </div>
+<script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+</body>
+<script type="text/javascript">
+//主処理部
+$(function(){
+
+    // アップロードボタンを押下した
+    $("#data_upload_form").submit(function(event){
+        // 要素規定の動作をキャンセルする
+        event.preventDefault();
+
+        var ajaxUrl = "/import/upload";
+
+        if(window.FormData){
+            var formData = new FormData($(this)[0]);
+
+            $.ajax({
+                type : "POST",                  // HTTP通信の種類
+                url  : ajaxUrl,                 // リクエストを送信する先のURL
+                dataType : "text",              // サーバーから返されるデータの型
+                data : formData,                // サーバーに送信するデータ
+                processData : false,
+                contentType: false,
+            }).done(function(data) {        // Ajax通信が成功した時の処理
+                alert("アップロードが完了しました。");
+            }).fail(function(XMLHttpRequest, textStatus, errorThrown) { // Ajax通信が失敗した時の処理
+                alert("アップロードが失敗しました。");
+            });
+        }else{
+            alert("アップロードに対応できていないブラウザです。");
+        }
+    });
+});
+</script>
+</html>
